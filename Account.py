@@ -1,14 +1,22 @@
-import CashDispenser
-import Transaction
+# import CashDispenser
+# import Transaction
+import BankCustomer
 
 
+class Account():
 
-class Account(CashDispenser):
-    __accounte_number = 0
-    Balanse = 0
-    __trans = Transaction.Transaction
+    # __trans = Transaction.Transaction
 
-    def CalculateInterest(self):
+    def __init__(self, Balanse):
+        self.Balanse = Balanse
+
+    def top_up_balance(self, cash):
+        self.Balanse = + cash
+
+    def withdraw_from_balance(self, cash):
+        self.Balanse = - cash
+
+    def CalculateInterest(self, cash):
         pass
 
     def UpdateAccount(self):
@@ -16,4 +24,3 @@ class Account(CashDispenser):
 
     def VentyWithdrawAmount(self):
         pass
-
