@@ -13,5 +13,3 @@ class ATMCard():
 
     def ChangePIN(self, newPIN):
         self.__PIN = newPIN
-
-
