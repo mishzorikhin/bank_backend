@@ -27,8 +27,9 @@ class ATM:
         if balance < 0:
             newTransaction = Transaction.Transaction(Customer, Customer, balance, self.ATM_ID)
             newTransaction.StartTransaction()
+            Customer.CurAcc.addTransaction(newTransaction)
             if newTransaction.state == -1:
-                print(False)
+                print("state = -1")
 
         else:
             print(False)
@@ -38,6 +39,9 @@ class ATM:
         if balance > 0:
             newTransaction = Transaction.Transaction(Customer1, Customer2, balance, self.ATM_ID)
             newTransaction.StartTransaction()
+            Customer1.CurAcc.addTransaction(newTransaction)
+            Customer2.CurAcc.addTransaction(newTransaction)
+           # print(newTransaction)
             if newTransaction.state == -1:
                 print(False)
         else:
