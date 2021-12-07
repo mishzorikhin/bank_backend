@@ -10,8 +10,36 @@ class ATM:
     def display_ATM(self):
         print("ATM_ID : ", self.ATM_ID)
 
-    def cash_deposit(self, Customer, balanse):
-        newTransaction = Transaction.Transaction(Customer, Customer, balanse)
-        newTransaction.StartTransaction()
-        print(newTransaction)
+        #  Зачисление денежных средств
 
+    def crediting_funds(self, Customer, balance):
+        if balance > 0:
+            newTransaction = Transaction.Transaction(Customer, Customer, balance, self.ATM_ID)
+            newTransaction.StartTransaction()
+            Customer.CurAcc.addTransaction(newTransaction)
+            print(Customer.CurAcc.Transactions)
+            if newTransaction.state == -1:
+                print(False)
+        else:
+            print(False)
+
+    # снятие денежных средств
+    def withdrawal_funds(self, Customer, balance):
+        if balance < 0:
+            newTransaction = Transaction.Transaction(Customer, Customer, balance, self.ATM_ID)
+            newTransaction.StartTransaction()
+            if newTransaction.state == -1:
+                print(False)
+
+        else:
+            print(False)
+
+    # перевод другому лицу
+    def transfer_another(self, Customer1, Customer2, balance):
+        if balance > 0:
+            newTransaction = Transaction.Transaction(Customer1, Customer2, balance, self.ATM_ID)
+            newTransaction.StartTransaction()
+            if newTransaction.state == -1:
+                print(False)
+        else:
+            print(False)

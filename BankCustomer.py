@@ -1,8 +1,8 @@
 from ATMCard import ATMCard
-from Account import Account
+from Acc import Account
 
 
-class BankCustomer():
+class BankCustomer:
 
     #__CustomerName = " "
     #__Address = " "
@@ -15,8 +15,10 @@ class BankCustomer():
         self.__Address = Address
         self.__Email = Email
         self.__Card = ATMCard(1234, "001")
-        self.Acc = self.__Card.Acc
-
+        self.CurAcc = self.__Card.CurAcc
+        self.SavAcc = self.__Card.SavAcc
+        print(self.CurAcc)
+        print(self.SavAcc)
 
 
     def display_Customer(self):
@@ -27,7 +29,8 @@ class BankCustomer():
               "\n   PIN : ", self.__Card.getCardInfo()[0],
               "\n   Card_ID : ", self.__Card.getCardInfo()[1],
               "\nAccount"
-              "\n    Balanse : ", self.Acc.Balanse)
+              "\n   Savings Account Balance : ", self.SavAcc.Balanse,
+              "\n   Current Account Balance : ", self.CurAcc.Balanse)
 
 
 

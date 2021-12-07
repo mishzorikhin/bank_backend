@@ -1,40 +1,58 @@
 from datetime import datetime
-import Account
+import Acc
 
 
 class Transaction():
 
-    def __init__(self, customer1, customer2, amount):
-        self.sender = customer1  # отправитель
-        self.addressee = customer2  # получатель
-        self.amount = amount #сумма
-        self.type = 0  # 0 - снятие 1 - занесение
+    def __init__(self, customer1, customer2, amount, ATM_ID):
+        self.customer1 = customer1  # клиент 1 отправитель
+        self.customer2 = customer2  # клиент 2 принимающий
+        self.amount = amount  # сумма
         self.state = 0  # 0 - не завершенная -1 - отклонена 1 - завершена
-        self.data = datetime.today()
+        self.ATM_ID = ATM_ID
 
+        if customer1 == customer2:
+            self.type = 0  # взоимодейсвие с банкоматом
+        else:
+            self.type = 1  # взоимодейсвие между клиентами
+
+    def GetBalance(self, customer):
+        return customer.CurAcc.Balanse
 
     def StartTransaction(self):
-        #print(self.amount, self.sender.Acc.Balanse)
-        self.addressee.Acc.top_up_balance(self.amount)
-        self.state = 1
+        if self.type == 1:
+            if self.GetBalance(self.customer1) < self.amount:
+                self.EndTransaction(-1)
+                # баланс отправителя меньше суммы перевода
+            else:
+                # перевод стредств от customer1 - customer2
+                self.customer1.CurAcc.edit_balance(self.amount*(-1))
+                self.customer2.CurAcc.edit_balance(self.amount)
+                self.EndTransaction(1)
 
+        else:
+            if self.amount < 0:
+                # снятие с баланса
+                if self.GetBalance(self.customer1) > 0:
+                    self.customer1.CurAcc.edit_balance(self.amount)
+                    self.EndTransaction(1)
+                else:
+                    # если сумма снятия больше баланса
+                    self.EndTransaction(-1)
 
-      #  if self.sender.Balanse <= self.amount:
-      #      self.state = -1
-      #      self.CompleteTransaction()
-#
-      #      return self.state
-#
-      #  else:
-      #      self.addressee.top_up_balance(self.amount)
+            else:
+                # пополнение баланса
+                self.customer1.CurAcc.edit_balance(self.amount)
+                self.EndTransaction(1)
 
+    def EndTransaction(self, state):
+        self.state = state
+        self.data = datetime.today()
 
-
-    def GetAccountBalance(self):
-        pass
-
-    def CompleteTransaction(self):
-        pass
-
-
-
+    def __repr__(self):
+        return "customer1 " # + self.customer1  # + \
+        #       " customer2 " + self.customer2 + \
+        #    " amount " + str(self.amount) + \
+        #    " state " + str(self.state) + \
+        #    " ATM_ID " + str(self.ATM_ID) +\
+        #    " type " + str(self.type)

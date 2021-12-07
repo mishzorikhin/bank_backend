@@ -1,9 +1,4 @@
-import Account
+import Acc
 
-class CurrentAccount(Account):
-
-    __intinterestRate = 0
-
-    def CalculateInterest(self):
-
-        pass
+class CurrentAccount(Acc.Account):
+    pass
