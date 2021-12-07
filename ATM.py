@@ -17,7 +17,6 @@ class ATM:
             newTransaction = Transaction.Transaction(Customer, Customer, balance, self.ATM_ID)
             newTransaction.StartTransaction()
             Customer.CurAcc.addTransaction(newTransaction)
-            print(Customer.CurAcc.Transactions)
             if newTransaction.state == -1:
                 print(False)
         else:

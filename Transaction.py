@@ -2,7 +2,7 @@ from datetime import datetime
 import Acc
 
 
-class Transaction():
+class Transaction:
 
     def __init__(self, customer1, customer2, amount, ATM_ID):
         self.customer1 = customer1  # клиент 1 отправитель
@@ -17,7 +17,7 @@ class Transaction():
             self.type = 1  # взоимодейсвие между клиентами
 
     def GetBalance(self, customer):
-        return customer.CurAcc.Balanse
+        return customer.CurAcc.Balance
 
     def StartTransaction(self):
         if self.type == 1:
@@ -49,10 +49,10 @@ class Transaction():
         self.state = state
         self.data = datetime.today()
 
-    def __repr__(self):
-        return "customer1 " # + self.customer1  # + \
-        #       " customer2 " + self.customer2 + \
-        #    " amount " + str(self.amount) + \
-        #    " state " + str(self.state) + \
-        #    " ATM_ID " + str(self.ATM_ID) +\
-        #    " type " + str(self.type)
+    #def __repr__(self):
+    #    return "customer1 " # + self.customer1  # + \
+    #    #       " customer2 " + self.customer2 + \
+    #    #    " amount " + str(self.amount) + \
+    #    #    " state " + str(self.state) + \
+    #    #    " ATM_ID " + str(self.ATM_ID) +\
+    #    #    " type " + str(self.type)

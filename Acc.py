@@ -1,6 +1,4 @@
 # import CashDispenser
-from os.path import sep
-
 
 class Account:
 

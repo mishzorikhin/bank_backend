@@ -17,8 +17,7 @@ class BankCustomer:
         self.__Card = ATMCard(1234, "001")
         self.CurAcc = self.__Card.CurAcc
         self.SavAcc = self.__Card.SavAcc
-        print(self.CurAcc)
-        print(self.SavAcc)
+
 
 
     def display_Customer(self):
@@ -29,8 +28,8 @@ class BankCustomer:
               "\n   PIN : ", self.__Card.getCardInfo()[0],
               "\n   Card_ID : ", self.__Card.getCardInfo()[1],
               "\nAccount"
-              "\n   Savings Account Balance : ", self.SavAcc.Balanse,
-              "\n   Current Account Balance : ", self.CurAcc.Balanse)
+              "\n   Savings Account Balance : ", self.SavAcc.Balance,
+              "\n   Current Account Balance : ", self.CurAcc.Balance)
 
 
 
