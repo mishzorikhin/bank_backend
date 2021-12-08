@@ -11,7 +11,7 @@ class BankCustomer:
     #Acc = []
 
     def __init__(self, CustomerName, Address, Email):
-        self.__CustomerName = CustomerName
+        self.CustomerName = CustomerName
         self.__Address = Address
         self.__Email = Email
         self.__Card = ATMCard(1234, "001")
@@ -21,7 +21,7 @@ class BankCustomer:
 
 
     def display_Customer(self):
-        print("CustomerName : ", self.__CustomerName,
+        print("CustomerName : ", self.CustomerName,
               "\nAddress : ", self.__Address,
               "\nEmail : ", self.__Email,
               "\nCard"

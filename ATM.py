@@ -10,6 +10,11 @@ class ATM:
     def display_ATM(self):
         print("ATM_ID : ", self.ATM_ID)
 
+    def display_Transaction(self, Customer):
+        print("Список транзакций для :" + Customer.CustomerName)
+        for i in Customer.CurAcc.Transactions:
+            print(i)
+
 
 
         #  Зачисление денежных средств
@@ -42,7 +47,7 @@ class ATM:
             newTransaction.StartTransaction()
             Customer1.CurAcc.addTransaction(newTransaction)
             Customer2.CurAcc.addTransaction(newTransaction)
-            # print(newTransaction)
+
             if newTransaction.state == -1:
                 print("Транзакция отклонена")
         else:

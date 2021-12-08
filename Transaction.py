@@ -49,10 +49,10 @@ class Transaction:
         self.state = state
         self.data = datetime.today()
 
-   #def __repr__(self):
-   #    return "customer1 "  + str(self.customer1 )#  + \
-   #      #    " customer2 " + self.customer2 + \
-   #      # " amount " + str(self.amount) + \
-   #      # " state " + str(self.state) + \
-   #      # " ATM_ID " + str(self.ATM_ID) +\
-   #      # " type " + str(self.type)
+    def __repr__(self):
+        return "\nоправитель : " + str(self.customer1.CustomerName) + \
+               "\nполучатель : " + str(self.customer2.CustomerName) + \
+               "\nсумма : " + str(self.amount) + \
+               "\nстатус : " + str(self.state) + \
+               "\nдата : " + str(self.data) + \
+               "\nId банкомата : " + str(self.ATM_ID)
