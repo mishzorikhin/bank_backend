@@ -1,3 +1,4 @@
+import uuid
 from datetime import datetime
 import Acc
 
@@ -5,11 +6,13 @@ import Acc
 class Transaction:
 
     def __init__(self, customer1, customer2, amount, ATM_ID):
+        self.transactionID = str(uuid.uuid4().fields[-1])[:8]
         self.customer1 = customer1  # клиент 1 отправитель
         self.customer2 = customer2  # клиент 2 принимающий
         self.amount = amount  # сумма
         self.state = 0  # 0 - не завершенная -1 - отклонена 1 - завершена
         self.ATM_ID = ATM_ID
+
 
         if customer1 == customer2:
             self.type = 0  # взоимодейсвие с банкоматом
@@ -50,7 +53,8 @@ class Transaction:
         self.data = datetime.today()
 
     def __repr__(self):
-        return "\nоправитель : " + str(self.customer1.CustomerName) + \
+        return "\nID транзакции : " + str(self.transactionID) + \
+               "\nоправитель : " + str(self.customer1.CustomerName) + \
                "\nполучатель : " + str(self.customer2.CustomerName) + \
                "\nсумма : " + str(self.amount) + \
                "\nстатус : " + str(self.state) + \
