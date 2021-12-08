@@ -10,17 +10,18 @@ class ATM:
     def display_ATM(self):
         print("ATM_ID : ", self.ATM_ID)
 
-        #  Зачисление денежных средств
 
+
+        #  Зачисление денежных средств
     def crediting_funds(self, Customer, balance):
         if balance > 0:
             newTransaction = Transaction.Transaction(Customer, Customer, balance, self.ATM_ID)
             newTransaction.StartTransaction()
             Customer.CurAcc.addTransaction(newTransaction)
             if newTransaction.state == -1:
-                print(False)
+                print("Транзакция отклонена")
         else:
-            print(False)
+            print("Зачисление отрицательной суммы невозможено")
 
     # снятие денежных средств
     def withdrawal_funds(self, Customer, balance):
@@ -29,10 +30,10 @@ class ATM:
             newTransaction.StartTransaction()
             Customer.CurAcc.addTransaction(newTransaction)
             if newTransaction.state == -1:
-                print("state = -1")
+                print("Транзакция отклонена")
 
         else:
-            print(False)
+            print("сумма для снятия должна быть меньше 0")
 
     # перевод другому лицу
     def transfer_another(self, Customer1, Customer2, balance):
@@ -41,8 +42,8 @@ class ATM:
             newTransaction.StartTransaction()
             Customer1.CurAcc.addTransaction(newTransaction)
             Customer2.CurAcc.addTransaction(newTransaction)
-           # print(newTransaction)
+            # print(newTransaction)
             if newTransaction.state == -1:
-                print(False)
+                print("Транзакция отклонена")
         else:
-            print(False)
+            print("перевод отрицательной суммы невозможен")
