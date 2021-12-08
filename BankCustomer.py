@@ -1,3 +1,5 @@
+import uuid
+
 from ATMCard import ATMCard
 from Acc import Account
 
@@ -14,7 +16,7 @@ class BankCustomer:
         self.CustomerName = CustomerName
         self.__Address = Address
         self.__Email = Email
-        self.__Card = ATMCard(1234, "001")
+        self.__Card = ATMCard(str(uuid.uuid4().fields[-1])[:4], str(uuid.uuid4().fields[-1])[:6])
         self.CurAcc = self.__Card.CurAcc
         self.SavAcc = self.__Card.SavAcc
 

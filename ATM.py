@@ -15,8 +15,6 @@ class ATM:
         for i in Customer.CurAcc.Transactions:
             print(i)
 
-
-
         #  Зачисление денежных средств
     def crediting_funds(self, Customer, balance):
         if balance > 0:
