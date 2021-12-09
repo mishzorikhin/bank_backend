@@ -25,18 +25,16 @@ class Transaction:
         if self.type==1:
 
             if get_balance(self.customer1) < self.amount:
-                print(False)
                 self.end_transaction(-1)
                 # баланс отправителя меньше суммы перевода
             else:
-                print(True)
                 # перевод стредств от customer1 - customer2
                 self.customer1.CurAcc.edit_balance(self.amount * (-1))
                 self.customer2.CurAcc.edit_balance(self.amount)
                 self.end_transaction(1)
 
         else:
-            if self.amount < 0:
+            if self.amount <= 0:
                 # снятие с баланса
                 if get_balance(self.customer1) > 0:
                     self.customer1.CurAcc.edit_balance(self.amount)
