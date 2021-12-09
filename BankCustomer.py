@@ -12,6 +12,10 @@ class BankCustomer:
         self.CurAcc = self.__Card.CurAcc
         self.SavAcc = self.__Card.SavAcc
 
+
+    def ChangePIN(self, newPIN):
+        self.__Card.ChangePIN(newPIN)
+
     def __repr__(self):
         return "\nCustomerName : " + str(self.CustomerName) + \
                "\nAddress : " + self.__Address + \
@@ -22,6 +26,3 @@ class BankCustomer:
                "\nAccount" + \
                "\n   Savings Account Balance : " + str(self.SavAcc.Balance) + \
                "\n   Current Account Balance : " + str(self.CurAcc.Balance)
-
-    def ChangePIN(self, newPIN):
-        self.__Card.ChangePIN(newPIN)

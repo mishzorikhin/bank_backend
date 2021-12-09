@@ -17,16 +17,19 @@ class Transaction:
         self.ATM_ID = ATM_ID
 
         if customer1 == customer2:
-            self.type = True  # взоимодейсвие с банкоматом
+            self.type = 0  # взоимодейсвие с банкоматом
         else:
-            self.type = False  # взоимодейсвие между клиентами
+            self.type = 1  # взоимодейсвие между клиентами
 
     def start_transaction(self):
-        if self.type:
+        if self.type==1:
+
             if get_balance(self.customer1) < self.amount:
+                print(False)
                 self.end_transaction(-1)
                 # баланс отправителя меньше суммы перевода
             else:
+                print(True)
                 # перевод стредств от customer1 - customer2
                 self.customer1.CurAcc.edit_balance(self.amount * (-1))
                 self.customer2.CurAcc.edit_balance(self.amount)
@@ -57,4 +60,5 @@ class Transaction:
                "\nсумма : " + str(self.amount) + \
                "\nстатус : " + str(self.state) + \
                "\nдата : " + str(self.data) + \
-               "\nId банкомата : " + str(self.ATM_ID)
+               "\nId банкомата : " + str(self.ATM_ID) +\
+                "\n"
