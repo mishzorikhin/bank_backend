@@ -1,9 +1,6 @@
 from CurrentAccount import CurrentAccount
 from SavingsAccount import SavingsAccount
 
-import Acc
-
-
 class ATMCard:
 
     def __init__(self, PIN, Card_ID):

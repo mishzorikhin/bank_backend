@@ -12,16 +12,16 @@ class BankCustomer:
         self.CurAcc = self.__Card.CurAcc
         self.SavAcc = self.__Card.SavAcc
 
-    def display_Customer(self):
-        print("\nCustomerName : ", self.CustomerName,
-              "\nAddress : ", self.__Address,
-              "\nEmail : ", self.__Email,
-              "\nCard"
-              "\n   PIN : ", self.__Card.getCardInfo()[0],
-              "\n   Card_ID : ", self.__Card.getCardInfo()[1],
-              "\nAccount"
-              "\n   Savings Account Balance : ", self.SavAcc.Balance,
-              "\n   Current Account Balance : ", self.CurAcc.Balance)
+    def __repr__(self):
+        return "\nCustomerName : " + str(self.CustomerName) + \
+               "\nAddress : " + self.__Address + \
+               "\nEmail : " + self.__Email + \
+               "\nCard" + \
+               "\n   PIN : " + str(self.__Card.getCardInfo()[0]) + \
+               "\n   Card_ID : " + str(self.__Card.getCardInfo()[1]) + \
+               "\nAccount" + \
+               "\n   Savings Account Balance : " + str(self.SavAcc.Balance) + \
+               "\n   Current Account Balance : " + str(self.CurAcc.Balance)
 
     def ChangePIN(self, newPIN):
         self.__Card.ChangePIN(newPIN)

@@ -9,6 +9,6 @@ class Account:
     def edit_balance(self, cash):
         self.Balance = self.Balance + cash
 
-    def addTransaction(self, Transaction):
+    def add_transaction(self, Transaction):
         self.Transactions.append(Transaction)
 
