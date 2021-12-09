@@ -1,0 +1,77 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+BankCustomer <|-- ATMCard
+ATMCard <|-- Account
+Account <|--SavingsAccount
+Account <|--CurrentAccount
+
+Account - Transaction
+ATM - BankCustomer
+
+class ATM{
+ATM_ID
+__init__()
+__repr__()
+display_transaction()
+crediting_funds()
+withdrawal_funds()
+transfer_another()
+get_balance()
+}
+
+class ATMCard {
+__PIN
+__Card_ID
+SavAcc
+CurAcc
+__init__()
+getCardInfo()
+ChangePIN()
+}
+
+class BankCustomer {
+__Address
+__Card
+CurAcc
+CustomerName
+SavAcc
+__init__()
+__repr__()
+ChangePIN()
+}
+
+class Account {
+balance
+Transactions
+__init__()
+edit_balance()
+add_transaction()
+}
+
+class SavingsAccount{
+__interest_rate
+__repr__()
+deposit_growth()
+}
+
+class CurrentAccount{
+__repr__()
+}
+
+class Transaction{
+data
+transactionID
+customer1
+customer2
+amount
+state
+ATM_ID
+type
+__init__()
+start_transaction()
+end_transaction()
+__repr__()
+}
+
+@enduml
