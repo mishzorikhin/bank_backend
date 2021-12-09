@@ -13,7 +13,6 @@ class Transaction:
         self.state = 0  # 0 - не завершенная -1 - отклонена 1 - завершена
         self.ATM_ID = ATM_ID
 
-
         if customer1 == customer2:
             self.type = 0  # взоимодейсвие с банкоматом
         else:
@@ -29,7 +28,7 @@ class Transaction:
                 # баланс отправителя меньше суммы перевода
             else:
                 # перевод стредств от customer1 - customer2
-                self.customer1.CurAcc.edit_balance(self.amount*(-1))
+                self.customer1.CurAcc.edit_balance(self.amount * (-1))
                 self.customer2.CurAcc.edit_balance(self.amount)
                 self.EndTransaction(1)
 

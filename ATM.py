@@ -1,6 +1,4 @@
 import Transaction
-from CashDispenser import CashDispenser
-
 
 class ATM:
 
@@ -50,3 +48,7 @@ class ATM:
                 print("Транзакция отклонена")
         else:
             print("перевод отрицательной суммы невозможен")
+
+    def get_balance(self,Customer):
+        print(Customer.CurAcc)
+        print(Customer.SavAcc)
