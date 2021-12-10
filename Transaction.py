@@ -1,13 +1,14 @@
 import uuid
 from datetime import datetime
 
+
 def get_balance(customer):
     return customer.CurAcc.Balance
 
 
 class Transaction:
 
-    def __init__(self, customer1, customer2, amount, ATM_ID):
+    def __init__(self, customer1, customer2, amount, acc, ATM_ID):
         self.data = datetime.today()
         self.transactionID = str(uuid.uuid4().fields[-1])[:8]
         self.customer1 = customer1  # клиент 1 отправитель
@@ -15,6 +16,7 @@ class Transaction:
         self.amount = amount  # сумма
         self.state = 0  # 0 - не завершенная -1 - отклонена 1 - завершена
         self.ATM_ID = ATM_ID
+        self.acc = acc # 0 - CurAcc 1 - SavAcc
 
         if customer1 == customer2:
             self.type = 0  # взоимодейсвие с банкоматом
@@ -22,7 +24,7 @@ class Transaction:
             self.type = 1  # взоимодейсвие между клиентами
 
     def start_transaction(self):
-        if self.type==1:
+        if self.type == 1:
 
             if get_balance(self.customer1) < self.amount:
                 self.end_transaction(-1)
@@ -37,7 +39,10 @@ class Transaction:
             if self.amount <= 0:
                 # снятие с баланса
                 if get_balance(self.customer1) > 0:
-                    self.customer1.CurAcc.edit_balance(self.amount)
+                    if self.acc == 0:
+                        self.customer1.CurAcc.edit_balance(self.amount)
+                    else:
+                        self.customer1.SavAcc.edit_balance(self.amount)
                     self.end_transaction(1)
                 else:
                     # если сумма снятия больше баланса
@@ -45,6 +50,10 @@ class Transaction:
 
             else:
                 # пополнение баланса
+                if self.acc == 0:
+                    self.customer1.CurAcc.edit_balance(self.amount)
+                else:
+                    self.customer1.SavAcc.edit_balance(self.amount)
                 self.customer1.CurAcc.edit_balance(self.amount)
                 self.end_transaction(1)
 
@@ -58,5 +67,5 @@ class Transaction:
                "\nсумма : " + str(self.amount) + \
                "\nстатус : " + str(self.state) + \
                "\nдата : " + str(self.data) + \
-               "\nId банкомата : " + str(self.ATM_ID) +\
-                "\n"
+               "\nId банкомата : " + str(self.ATM_ID) + \
+               "\n"
