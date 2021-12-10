@@ -52,10 +52,10 @@ class Transaction:
             else:
                 # пополнение баланса
                 if self.acc == 1:
-                    print(True)
+                    print(True, self.acc)
                     self.customer1.SavAcc.edit_balance(self.amount)
                 else:
-                    print(False)
+                    print(False, self.acc)
                     self.customer1.CurAcc.edit_balance(self.amount)
                 self.end_transaction(1)
 
