@@ -3,11 +3,12 @@ import BankCustomer
 
 ATM1 = ATM.ATM("0001")
 
-
 person1 = BankCustomer.BankCustomer("Соколов Константин Тимофеевич", "въезд Ладыгина, 50", "pucru6081@yopmail.com")
-person2 = BankCustomer.BankCustomer("Сорокина Елизавета Яновна", " бульвар Славы, 32", "kellie22@green.com")
 
-
-ATM1.replenishment_savings_account(person2, 50)
-print(person2)
+person1.ChangePIN(1234)
+print(person1)
+ATM1.crediting_funds(person1, 100)
+ATM1.crediting_funds(person1, 300)
+print(ATM1.get_balance(person1, "CurAcc"))
+print(*ATM1.display_transaction(person1))
 

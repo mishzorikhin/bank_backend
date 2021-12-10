@@ -50,6 +50,7 @@ class ATM:
         else:
             newTransaction = Transaction.Transaction(customer, customer, balance, 1, self.ATM_ID) # 1 - SavAcc
             newTransaction.start_transaction()
+            customer.SavAcc.deposit_growth
             customer.CurAcc.add_transaction(newTransaction)
             if newTransaction.state == -1:
                 return -1
