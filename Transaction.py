@@ -18,6 +18,7 @@ class Transaction:
         self.ATM_ID = ATM_ID
         self.acc = acc # 0 - CurAcc 1 - SavAcc
 
+
         if customer1 == customer2:
             self.type = 0  # взоимодейсвие с банкоматом
         else:
@@ -50,11 +51,12 @@ class Transaction:
 
             else:
                 # пополнение баланса
-                if self.acc == 0:
-                    self.customer1.CurAcc.edit_balance(self.amount)
-                else:
+                if self.acc == 1:
+                    print(True)
                     self.customer1.SavAcc.edit_balance(self.amount)
-                self.customer1.CurAcc.edit_balance(self.amount)
+                else:
+                    print(False)
+                    self.customer1.CurAcc.edit_balance(self.amount)
                 self.end_transaction(1)
 
     def end_transaction(self, state):

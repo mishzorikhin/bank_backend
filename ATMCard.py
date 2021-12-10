@@ -6,7 +6,7 @@ class ATMCard:
     def __init__(self, PIN, Card_ID):
         self.__PIN = PIN
         self.__Card_ID = Card_ID
-        self.SavAcc = SavingsAccount(100)
+        self.SavAcc = SavingsAccount(0)
         self.CurAcc = CurrentAccount(0)
 
     def getCardInfo(self):

@@ -48,7 +48,7 @@ class ATM:
         if balance < 0:
             return -1
         else:
-            newTransaction = Transaction.Transaction(customer, balance, 1, self.ATM_ID)  # 1 - SavAcc
+            newTransaction = Transaction.Transaction(customer, customer, balance, 0, self.ATM_ID) # 1 - SavAcc
             newTransaction.start_transaction()
             customer.CurAcc.add_transaction(newTransaction)
             if newTransaction.state == -1:
