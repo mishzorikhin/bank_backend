@@ -1,6 +1,5 @@
 import Acc
 
-
 class SavingsAccount(Acc.Account):
     __interest_rate = 5
 

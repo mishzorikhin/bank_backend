@@ -43,7 +43,6 @@ class ATM:
             if newTransaction.state == -1:
                 return -1
 
-
     def replenishment_savings_account(self, customer, balance):
         if balance < 0:
             return -1
@@ -54,8 +53,6 @@ class ATM:
             customer.CurAcc.add_transaction(newTransaction)
             if newTransaction.state == -1:
                 return -1
-
-
 
     def get_balance(self, Customer, type):
         if type == "CurAcc":

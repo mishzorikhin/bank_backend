@@ -57,7 +57,6 @@ class Transaction:
                     self.customer1.SavAcc.edit_balance(self.amount)
                     self.customer1.CurAcc.edit_balance((self.amount*-1))
                 else:
-
                     self.customer1.CurAcc.edit_balance(self.amount)
                 self.end_transaction(1)
 
