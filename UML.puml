@@ -1,8 +1,8 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-BankCustomer <|-- ATMCard
-ATMCard <|-- Account
+BankCustomer -- ATMCard
+ATMCard *-- Account
 Account <|--SavingsAccount
 Account <|--CurrentAccount
 

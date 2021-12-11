@@ -37,6 +37,7 @@ class Transaction:
                 self.end_transaction(1)
 
         else:
+
             if self.amount <= 0:
                 # снятие с баланса
                 if get_balance(self.customer1) > 0:
@@ -50,12 +51,13 @@ class Transaction:
                     self.end_transaction(-1)
 
             else:
+
                 # пополнение баланса
                 if self.acc == 1:
-                    print(True, self.acc)
                     self.customer1.SavAcc.edit_balance(self.amount)
+                    self.customer1.CurAcc.edit_balance((self.amount*-1))
                 else:
-                    print(False, self.acc)
+
                     self.customer1.CurAcc.edit_balance(self.amount)
                 self.end_transaction(1)
 
